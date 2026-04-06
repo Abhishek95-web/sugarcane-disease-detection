@@ -1,0 +1,112 @@
+/* ── Drop zone ──────────────────────────────────── */
+.drop-zone {
+  border: 1.5px dashed var(--border-amber);
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: rgba(200, 150, 62, 0.03);
+}
+.drop-zone:hover, .drag-active {
+  border-color: var(--amber);
+  background: var(--amber-glow);
+  transform: scale(1.01);
+}
+
+.drop-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 4px; }
+.drop-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--cream);
+  font-weight: 600;
+}
+.drop-sub {
+  font-size: 13px;
+  color: var(--cream-muted);
+}
+
+/* ── Preview ────────────────────────────────────── */
+.preview-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-amber);
+}
+.preview-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+.preview-overlay {
+  position: absolute; inset: 0;
+  background: rgba(7, 26, 11, 0.55);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.preview-wrap:hover .preview-overlay { opacity: 1; }
+.preview-change {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(7, 26, 11, 0.8);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.preview-change:hover {
+  background: var(--green-mid);
+  border-color: var(--cream-muted);
+}
+
+/* ── Error ──────────────────────────────────────── */
+.upload-error {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--danger);
+  text-align: center;
+}
+
+/* ── Tips ───────────────────────────────────────── */
+.upload-tips {
+  background: var(--cream-faint);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.tip-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  margin-bottom: 8px;
+}
+.upload-tips ul {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.upload-tips li {
+  font-size: 13px;
+  color: var(--cream-muted);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.upload-tips li::before {
+  content: "·";
+  position: absolute; left: 0;
+  color: var(--amber);
+}
+
+/* ── Actions ────────────────────────────────────── */
+.upload-actions {
+  display: flex; justify-content: space-between;
+  gap: 1rem;
+}

@@ -1,0 +1,105 @@
+.landing-page {
+  gap: 2rem;
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* ── Decorative leaf lines ──────────────────────── */
+.leaf-lines {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  overflow: hidden;
+}
+.leaf-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(45, 110, 69, 0.25), transparent);
+  animation: leafFloat 8s ease-in-out infinite;
+}
+.leaf-line-0 { left: 8%;  height: 60vh; top: 10%; animation-delay: 0s; }
+.leaf-line-1 { left: 18%; height: 40vh; top: 30%; animation-delay: 1.2s; }
+.leaf-line-2 { left: 85%; height: 55vh; top: 15%; animation-delay: 0.6s; }
+.leaf-line-3 { left: 92%; height: 35vh; top: 40%; animation-delay: 1.8s; }
+.leaf-line-4 { left: 50%; height: 25vh; top: 5%;  animation-delay: 2.4s; opacity: 0.5; }
+.leaf-line-5 { left: 72%; height: 50vh; top: 20%; animation-delay: 3s; }
+
+@keyframes leafFloat {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 0.8; transform: scaleY(1.05); }
+}
+
+/* ── Hero ───────────────────────────────────────── */
+.landing-hero {
+  position: relative; z-index: 1;
+  max-width: 600px;
+}
+
+.landing-desc {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ── Stats ──────────────────────────────────────── */
+.landing-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.stat {
+  display: flex; flex-direction: column; align-items: center;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--amber-light);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  margin-top: 4px;
+}
+.stat-sep {
+  width: 1px; height: 40px;
+  background: var(--border);
+}
+
+/* ── Disease tags ───────────────────────────────── */
+.disease-tags {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 560px;
+}
+
+/* ── Footer ─────────────────────────────────────── */
+.landing-footer {
+  position: relative; z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+/* ── Button arrow ───────────────────────────────── */
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+@media (max-width: 480px) {
+  .landing-stats { gap: 1.2rem; }
+  .stat-value { font-size: 1.6rem; }
+}
