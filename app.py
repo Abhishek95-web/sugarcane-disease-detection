@@ -54,11 +54,19 @@ if gpus:
 # ── LOAD MODEL ONCE AT STARTUP ────────────────────────────
 model = None
 
+# Custom wrapper to handle TensorFlow version compatibility
+class DepthwiseConv2DCompat(tf.keras.layers.DepthwiseConv2D):
+    """Compatibility wrapper for DepthwiseConv2D to ignore 'groups' parameter"""
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('groups', None)  # Remove unsupported parameter
+        super().__init__(*args, **kwargs)
+
 def load_hybrid_model():
     global model
     try:
-        # load_model handles the full architecture — no need to rebuild
-        model = load_model(MODEL_PATH)
+        # Load with custom object scope to handle TF version compatibility
+        with tf.keras.utils.custom_object_scope({'DepthwiseConv2D': DepthwiseConv2DCompat}):
+            model = load_model(MODEL_PATH, compile=False)
         print(f"✅ Model loaded from '{MODEL_PATH}'")
         print(f"   Inputs  : {[inp.name for inp in model.inputs]}")
         print(f"   Output  : {model.output_shape}")
